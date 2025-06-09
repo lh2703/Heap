@@ -27,6 +27,24 @@ def encontrar_bloco_livre(lista_livre, tamanho, estrategia):
                 pior_indice = i
         return pior_indice
 
+    elif estrategia == 'first':
+        for i, bloco in enumerate(lista_livre):
+            if bloco['tamanho'] >= tamanho:
+                return i
+        return None
+
+
+    elif estrategia == 'next':
+        n = len(lista_livre)
+        for offset in range(n):
+            i = (ultima_pos + offset) % n
+            if lista_livre[i]['tamanho'] >= tamanho:
+                ultima_pos = (i + 1) % n  # Atualiza para próxima posição circular
+                return i
+        return None
+
+    return None
+
 def alocar(heap, lista_livre, alocacoes, id, tamanho, estrategia):
     indice = encontrar_bloco_livre(lista_livre, tamanho, estrategia)
     if indice is not None:
