@@ -1,6 +1,4 @@
 ultima_pos = 0
-tamanho_heap = int(input("Digite o tamanho da heap: "))
-
 def criar_heap(tamanho):
     heap = [False] * tamanho
     lista_livre = [{'inicio': 0, 'tamanho': tamanho}]
@@ -8,7 +6,11 @@ def criar_heap(tamanho):
     return heap, lista_livre, alocacoes
 
 def definir_estrategia():
-    return input("Digite a estratégia de heap (best, worst, first & next): ").strip().lower()
+    while True:
+        estrategia = input("Digite a estratégia de heap (best, worst, first ou next): ").strip().lower()
+        if estrategia in {'best', 'worst', 'first', 'next'}:
+            return estrategia
+        print("Estratégia inválida.")
 
 def encontrar_bloco_livre(lista_livre, tamanho, estrategia):
     global ultima_pos
@@ -90,6 +92,7 @@ def exibir_heap(heap):
 def menu():
     global ultima_pos
     ultima_pos = 0
+    tamanho_heap = int(input("Digite o tamanho da heap: "))
     heap, lista_livre, alocacoes = criar_heap(tamanho_heap)
     estrategia = 'best'
 
@@ -99,7 +102,8 @@ def menu():
         print("2. Alocar")
         print("3. Desalocar")
         print("4. Exibir")
-        print("5. Sair")
+        print("5. Lista de ID's")
+        print("6. Sair")
 
         try:
             opcao = int(input("Opção: "))
@@ -127,6 +131,13 @@ def menu():
         elif opcao == 4:
             exibir_heap(heap)
         elif opcao == 5:
+            if alocacoes:
+                print("IDs alocados:")
+                for id, info in alocacoes.items():
+                    print(f"ID: {id}, Início: {info['inicio']}, Tamanho: {info['tamanho']}")
+            else:
+                print("Nenhuma alocação feita.")
+        elif opcao == 6:
             break
         else:
             print("Opção inválida.")
