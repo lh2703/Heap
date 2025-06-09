@@ -18,6 +18,14 @@ def encontrar_bloco_livre(lista_livre, tamanho, estrategia):
                 melhor_tamanho = bloco['tamanho']
                 melhor_indice = i
         return melhor_indice
+    elif estrategia == 'worst':
+        pior_indice = None
+        pior_tamanho = -1
+        for i, bloco in enumerate(lista_livre):
+            if bloco['tamanho'] >= tamanho and bloco['tamanho'] > pior_tamanho:
+                pior_tamanho = bloco['tamanho']
+                pior_indice = i
+        return pior_indice
 
 def alocar(heap, lista_livre, alocacoes, id, tamanho, estrategia):
     indice = encontrar_bloco_livre(lista_livre, tamanho, estrategia)
