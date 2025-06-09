@@ -1,3 +1,6 @@
+ultima_pos = 0
+tamanho_heap = int(input("Digite o tamanho da heap: "))
+
 def criar_heap(tamanho):
     heap = [False] * tamanho
     lista_livre = [{'inicio': 0, 'tamanho': tamanho}]
@@ -87,7 +90,6 @@ def exibir_heap(heap):
 def menu():
     global ultima_pos
     ultima_pos = 0
-    tamanho_heap = 40
     heap, lista_livre, alocacoes = criar_heap(tamanho_heap)
     estrategia = 'best'
 
