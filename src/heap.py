@@ -44,7 +44,7 @@ def encontrar_bloco_livre(lista_livre, tamanho, estrategia):
         for offset in range(n):
             i = (ultima_pos + offset) % n
             if lista_livre[i]['tamanho'] >= tamanho:
-                ultima_pos = (i + 1) % n  # Atualiza para próxima posição circular
+                ultima_pos = (i + 1) % n 
                 return i
         return None
 
