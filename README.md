@@ -25,7 +25,7 @@ Desenvolvimento em Python de um gerenciador de **heap** interativo, que simula a
 
 ```
 ├── src/                                 # Código da Aplicação
-│   ├──benchmark.py                      # Arquivo principal
+│   ├──heap.py                      # Arquivo principal
 ├── README.md                            # Documentação do projeto
 ```
 
